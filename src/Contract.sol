@@ -16,8 +16,8 @@
 pragma solidity ^0.4.18;
 
 contract WETH9 {
-    string public name     = "Wrapped Ether";
-    string public symbol   = "WETH";
+    string public name;
+    string public symbol;
     uint8  public decimals = 18;
 
     event  Approval(address indexed src, address indexed guy, uint wad);
@@ -27,6 +27,11 @@ contract WETH9 {
 
     mapping (address => uint)                       public  balanceOf;
     mapping (address => mapping (address => uint))  public  allowance;
+
+    function WETH9(string _name, string _symbol) public {
+        name = _name;
+        symbol = _symbol;
+    }
 
     function() public payable {
         deposit();
